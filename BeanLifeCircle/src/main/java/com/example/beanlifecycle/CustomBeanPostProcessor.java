@@ -6,23 +6,23 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
+import java.beans.Beans;
+
 @Component
 @Slf4j
 public class CustomBeanPostProcessor implements BeanPostProcessor {
-
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof LifeCycleBean) {
+        if(bean instanceof LifeCycleBean) {
             log.info("6. BeanPostProcessor.postProcessBeforeInitialization() called for bean: {}", beanName);
-        }
-        return bean;
+        }return bean;
     }
 
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof LifeCycleBean) {
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException{
+        if(bean instanceof LifeCycleBean) {
             log.info("10. BeanPostProcessor.postProcessAfterInitialization() called for bean: {}", beanName);
         }
-        return bean;
+        return bean; // Return the bean as is, or modify it if needed
     }
 }

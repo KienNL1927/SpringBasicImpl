@@ -13,16 +13,13 @@ public class BeanLifeCycleApplication {
     public static void main(String[] args) {
         log.info("=== STARTING SPRING APPLICATION ===");
 
+        // Start the Spring application
         ConfigurableApplicationContext context = SpringApplication.run(BeanLifeCycleApplication.class, args);
 
         log.info("=== APPLICATION STARTED - GETTING BEAN ===");
 
-        // Get the bean to trigger its usage
         LifeCycleBean lifeCycleBean = context.getBean(LifeCycleBean.class);
         lifeCycleBean.doSomething();
-
-        log.info("=== SHUTTING DOWN APPLICATION ===");
-        context.close();
 
         log.info("=== APPLICATION SHUTDOWN COMPLETE ===");
     }

@@ -7,13 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @Slf4j
 public class BeanConfiguration {
-
-    // Alternative way to create a bean with custom init and destroy methods
-    @Bean(initMethod = "customInit", destroyMethod = "customDestroy")
-    public LifeCycleBean anotherLifeCycleBean() {
+    @Bean(initMethod = "init", destroyMethod = "cleanup")
+    public LifeCycleBean lifeCycleBean(){
         log.info("Creating AnotherLifeCycleBean via @Bean method");
-        LifeCycleBean bean = new LifeCycleBean();
-        bean.setCustomProperty("Configured via @Bean method");
-        return bean;
+        LifeCycleBean lifeCycleBean = new LifeCycleBean();
+        lifeCycleBean.setCustomProperty("Configured via @Bean method");
+        return lifeCycleBean;
     }
+
 }

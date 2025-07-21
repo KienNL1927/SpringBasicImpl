@@ -1,6 +1,11 @@
 package com.example.SpringTransaction.service;
 
 import com.example.SpringTransaction.entity.BankAccount;
+import com.example.SpringTransaction.repository.BankAccountRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 
 @Service
 public class BankService {
